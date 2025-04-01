@@ -12,6 +12,9 @@
 
         public function login(array $data = null):void {
             $this->data = $data;
+
+            $viewUser = new \App\Model\helpers\Read();
+
             var_dump("Model do login");
         }
     }
