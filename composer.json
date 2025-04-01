@@ -1,0 +1,16 @@
+{
+    "name": "gabriel/simple-crud",
+    "authors": [
+        {
+            "name": "gabriel",
+            "email": "gabriel02ramos@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "Core\\": "core"
+        }
+    },
+    "require": {}
+}
