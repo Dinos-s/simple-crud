@@ -22,4 +22,4 @@
 
     <button type="submit" name="Login" value="Acessar">Acessar</button>
 </form>
-<a href="#">Cadastrar</a>
+<a href="<?php echo URL;?>new-user/index">Cadastrar</a>
