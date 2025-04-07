@@ -3,17 +3,18 @@
 
     use PDOException;
 
-    class Update extends Conn {
+    // Classe genérica para deletar um registro do banco;
+    class Delete extends Conn {
         private string $table;
         private string|null $terms;
-        private array $data;
         private array $value = [];
         private string|null|bool $result;
-        private object $update;
+        private object $delete;
         private string $query;
         private object $conn;
 
-        function getResult():bool {
+        function getResult(): string|null|bool
+        {
             return $this->result;
         }
 
@@ -24,28 +25,13 @@
          * @param string $terms Recebe os links da QUERY, ex: sts_situation_id =:sts_situation_id;
          * @param string $parseString Recebe o valores que devem ser subtituidos no link, ex: sts_situation_id=1;
         */
-        public function exeUpdate(string $table, array $data, string|null $terms = null, string|null $parseString = null):void {
+        public function exeDelete(string $table, string|null $terms = null, string|null $parseString = null): void {
             $this->table = $table;
-            $this->data = $data;
             $this->terms = $terms;
 
             parse_str($parseString, $this->value);
 
-            $this->exeReplaceValues();
-        }
-
-        /**
-         * Cria-se a query para inserir os valores que fora, informados no formulário;
-         * Dentro do foreach, intera o array $data para que na query receba isso 'nome_campo=:nome_campo';
-         * E informa a query os valores corretos;
-        */
-        private function exeReplaceValues():void {
-            foreach($this->data as $key => $value) {
-                $values[] = $key . "=:" . $key;
-            }
-            $values = implode(', ', $values);
-
-            $this->query = "UPDATE {$this->table} SET {$values} {$this->terms}";
+            $this->query = "DELETE FROM {$this->table} {$this->terms}";
 
             $this->exeInstruction();
         }
@@ -54,13 +40,14 @@
          * Executa a QUERY; 
          * Quando executa a query com sucesso retorna o array de dados, senão retorna null;
         */
-        private function exeInstruction() {
+        private function exeInstruction(): void {
+            
             $this->connection();
             try {
-                $this->update->execute(array_merge($this->data, $this->value));
+                $this->delete->execute($this->value);
                 $this->result = true;
             } catch (PDOException $err) {
-                $this->result = null;
+                $this->result = false;
             }
         }
 
@@ -70,10 +57,9 @@
          * 
          * @return void
          */
-        private function connection(): void
-        {
+        private function connection(): void {
             $this->conn = $this->connectBD();
-            $this->update = $this->conn->prepare($this->query);
+            $this->delete = $this->conn->prepare($this->query);
         }
     }
 ?>

@@ -40,24 +40,54 @@
             $loadView->loadView();
         }
 
+        // Visualização dos detalhes de usuário;
+        /**
+         * Pega o id do usuário;
+         * Instancia o model 'ViewUser', para verificar se o usuário existe;
+        */
+        public function view(int|string|null $id = null):void {
+            if (!empty($id)) {
+                $this->id = (int) $id;
+
+                $viewUser = new \App\Model\ViewUser();
+                $viewUser->viewUser($this->id);
+                if ($viewUser->getResult()) {
+                    $this->data['viewUser'] = $viewUser->getResultBD();
+                    $this->viewDetailsUser();
+                } else {
+                    $urlRedirect = URL . "dashboard/index";
+                    header("Location: $urlRedirect");
+                }
+
+            } else {
+                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não encontrado!</p>";
+                $urlRedirect = URL . "dashboard/index";
+                header("Location: $urlRedirect");
+            }
+        }
+
+        private function viewDetailsUser() {
+            $loadView = new \Core\ConfigView("Views/users/viewUser", $this->data);
+            $loadView->loadView();
+        }
         // Listagem de usuários;
         /**
          * Instancia a classe responsável para listar os usuários cadastrados no banco;
          * Se tiver dados, eviamos a listagem para view;
          * Se não, coloca um array vazio;
         */
-        public function list() {
-            $listUsers = new \App\Model\ListUsers();
-            $listUsers->listUsers();
-            if ($listUsers->getResult()) {
-                $this->data['listUsers'] = $listUsers->getResultBD();
-            }else{
-                $this->data['listUsers'] = [];
-            }
+        // public function list() {
+        //     $listUsers = new \App\Model\ListUsers();
+        //     $listUsers->listUsers();
+        //     if ($listUsers->getResult()) {
+        //         $this->data['listUsers'] = $listUsers->getResultBD();
+        //     }else{
+        //         $this->data['listUsers'] = [];
+        //     }
 
-            $loadView = new \Core\ConfigView("Views/users/listUsers", $this->data);
-            $loadView->loadView();
-        }
+        //     $loadView = new \Core\ConfigView("Views/users/listUsers", $this->data);
+        //     $loadView->loadView();
+        // }
 
         // Edição de usuário;
         /**
@@ -115,6 +145,26 @@
                 $urlRedirect = URL . "dashboard/index";
                 header("Location: $urlRedirect");
             }
+        }
+
+        // Deletar usuário;
+        /**
+         * Instancia método que deleta um usuário;
+         * Pega o id do usuário qu deseja se deletar;
+         * Verifica se a varariavel $id não está vazia;
+         * Caso seja diferente de vazia, deleteamos o usuário;
+         * Caso não seja,  retorna um erro;
+        */
+        public function delete(int|string|null $id = null):void {
+            if (!empty($id)) {
+                $this->id = (int) $id;
+                $deleteUser = new \App\Model\DeleteUser();
+                $deleteUser->deleteUser($this->id);
+            } else {
+                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Necessário selecionar um usuário!</p>";
+            }
+            $urlRedirect = URL . "dashboard/index";
+            header("Location: $urlRedirect");
         }
     }
 ?>
