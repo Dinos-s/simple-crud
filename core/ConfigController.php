@@ -104,7 +104,7 @@
             $this->classLoad = "\\App\\Controller\\".$this->urlController;
 
             $classePage = new $this->classLoad();
-            $classePage->{$this->urlMetodo}();
+            $classePage->{$this->urlMetodo}($this->urlParam);
         }
     }
 ?>

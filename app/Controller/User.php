@@ -34,11 +34,23 @@
             }
         }
 
-        /**
-         * Instancia a classe responsável em carregar e enviar os dados para View.
-        */
+        //Instancia a classe responsável em carregar e enviar os dados para View.
         private function viewNewUser():void {
             $loadView = new \Core\ConfigView("Views/login/newUser", $this->data);
+            $loadView->loadView();
+        }
+
+        // Listagem de usuário;
+        public function list() {
+            $listUsers = new \App\Model\ListUsers();
+            $listUsers->listUsers();
+            if ($listUsers->getResult()) {
+                $this->data['listUsers'] = $listUsers->getResultBd();
+            }else{
+                $this->data['listUsers'] = [];
+            }
+
+            $loadView = new \Core\ConfigView("Views/users/listUsers", $this->data);
             $loadView->loadView();
         }
 
@@ -50,7 +62,7 @@
          * Se não, redireciona o usuário para página dashboard;
          * Sem o id e o dataform, não estiverem presentes, edita o usuário;
         */
-        public function edit(int|string|null $id):void {
+        public function edit(int|string|null $id = null):void {
             $this->dataForm = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
             if ((!empty($id)) and (empty($this->dataForm['EditUser']))) {
@@ -61,7 +73,7 @@
                     $this->data['form'] = $viewUser->getResultBD();
                     $this->viewEditUser();
                 } else {
-                    $urlRedirect = URL . "dashboard/index";
+                    $urlRedirect = URL . "user/list";
                     header("Location: $urlRedirect");
                 }
             } else {

@@ -8,7 +8,7 @@
 ?>
 <span id="msg"></span>
 
-<form action="" method="post">
+<form action="" method="post" id="form-new-user">
     <?php 
         $nome = "";
         if (isset($valorForm['nome'])) {
