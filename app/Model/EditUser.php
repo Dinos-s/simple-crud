@@ -24,7 +24,7 @@
         /**
          * @return bool Retorna os detalhes do registro
         */
-        function getResultBd(): array|null
+        function getResultBD(): array|null
         {
             return $this->resultBD;
         }
@@ -39,7 +39,7 @@
             
             $viewUser = new \App\Model\helpers\Read();
             $viewUser->fullRead(
-                "SELECT id, nome, email FROM users WHERE id =:id",
+                "SELECT id, nome, email FROM users WHERE id=:id",
                 "id={$this->id}"
             );
 
@@ -76,7 +76,7 @@
         */
         private function edit():void {
             $upUser = new \App\Model\helpers\Update();
-            $upUser->exeUpdate("users", $this->data, "WHERE id =:id", "id={$this->data['id']}");
+            $upUser->exeUpdate("users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
             if ($upUser->getResult()) {
                 $_SESSION['msg'] = "<p style='color: green;'>Usuário editado com sucesso!</p>";

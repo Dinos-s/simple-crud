@@ -24,9 +24,10 @@
         public function listUsers() {
             $listUsers = new \App\Model\helpers\Read();
             $listUsers->fullRead(
-                "SELECT id, nome, email FROM users"
+                "SELECT id, nome, email FROM users WHERE id > :id",
+                "id=". $_SESSION['user_id']
             );
-
+            
             $this->resultBD = $listUsers->getResult();        
             if($this->resultBD){
                 $this->result = true;

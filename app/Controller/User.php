@@ -40,12 +40,17 @@
             $loadView->loadView();
         }
 
-        // Listagem de usuário;
+        // Listagem de usuários;
+        /**
+         * Instancia a classe responsável para listar os usuários cadastrados no banco;
+         * Se tiver dados, eviamos a listagem para view;
+         * Se não, coloca um array vazio;
+        */
         public function list() {
             $listUsers = new \App\Model\ListUsers();
             $listUsers->listUsers();
             if ($listUsers->getResult()) {
-                $this->data['listUsers'] = $listUsers->getResultBd();
+                $this->data['listUsers'] = $listUsers->getResultBD();
             }else{
                 $this->data['listUsers'] = [];
             }
@@ -73,7 +78,7 @@
                     $this->data['form'] = $viewUser->getResultBD();
                     $this->viewEditUser();
                 } else {
-                    $urlRedirect = URL . "user/list";
+                    $urlRedirect = URL . "dashboard/index";
                     header("Location: $urlRedirect");
                 }
             } else {

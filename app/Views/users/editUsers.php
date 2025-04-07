@@ -1,6 +1,14 @@
 <h1>Editr Usuário</h1>
 
 <?php 
+    if (isset($this->data['form'])) {
+        $valorForm = $this->data['form'];
+    }
+
+    if (isset($this->data['form'][0])) {
+        $valorForm = $this->data['form'][0];
+    }
+
     if (isset($_SESSION['msg'])) {
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
@@ -9,6 +17,14 @@
 <span id="msg"></span>
 
 <form action="" method="post">
+    <?php
+        $id = "";
+        if (isset($valorForm['id'])) {
+            $id = $valorForm['id'];
+        }
+    ?>
+    <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+
     <?php 
         $nome = "";
         if (isset($valorForm['nome'])) {
