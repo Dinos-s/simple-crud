@@ -28,10 +28,10 @@
                 $deleteUser->exeDelete("users", "WHERE id =:id", "id={$this->id}");
 
                 if ($deleteUser->getResult()) {
-                    $_SESSION['msg'] = "<p style='color: green;'>Usuário apagado com sucesso!</p>";
+                    $_SESSION['msg'] = "<p class='alert alert-success;'>Usuário apagado com sucesso!</p>";
                     $this->result = true;
                 } else {
-                    $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não apagado com sucesso!</p>";
+                    $_SESSION['msg'] = "<p class='alert alert-danger'>Erro: Usuário não apagado com sucesso!</p>";
                     $this->result = false;
                 }
             } else {
@@ -51,7 +51,7 @@
             if ($this->resultBD) {
                 return true;
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00'>Erro: Usuário não encontrado!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger'>Erro: Usuário não encontrado!</p>";
                 return false;
             }
         }

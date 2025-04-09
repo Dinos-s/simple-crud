@@ -19,7 +19,7 @@
             $this->data = array_map('trim', $this->data);
 
             if (in_array('', $this->data)){
-                $_SESSION['msg'] = "<p style='color: #f00'>Erro: Necessário preencher todos os campos!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger'>Erro: Necessário preencher todos os campos!</p>";
                 $this->result = false;
             } else {
                 $this->result = true;

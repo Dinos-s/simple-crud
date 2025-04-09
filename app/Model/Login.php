@@ -34,7 +34,7 @@
             if ($this->resultBD) {
                 $this->valPassword();
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário ou a senha incorreta!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger;'>Erro: Usuário ou a senha incorreta!</p>";
                 $this->result = false;
             }
         }
@@ -51,7 +51,7 @@
                 $_SESSION['user_email'] = $this->resultBD[0]['email'];
             $this->result = true;
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário ou a senha incorreta!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger;'>Erro: Usuário ou a senha incorreta!</p>";
                 $this->result = false;
             }
         }

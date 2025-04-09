@@ -45,7 +45,7 @@
             if ($this->resultBD) {
                 $this->result = true;
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00'>Erro: Usuário não encontrado!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger;'>Erro: Usuário não encontrado!</p>";
                 $this->result = false;
             }
         }

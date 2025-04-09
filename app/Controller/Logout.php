@@ -6,8 +6,8 @@
         // Destrói as sessões iniciadas pelo o usuário;
         public function index() {
             unset($_SESSION['user_id'], $_SESSION['user_nome'], $_SESSION['user_email']);
-            $_SESSION['msg'] = "<p style='color: green;'>Logout realizado com sucesso!</p>";
-            $urlRedirect = URL. "login/index";
+            $_SESSION['msg'] = "<p class='alert alert-success'>Logout realizado com sucesso!</p>";
+            $urlRedirect = URL;
             header("Location: $urlRedirect");
         }
     }

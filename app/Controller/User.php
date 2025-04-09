@@ -60,7 +60,7 @@
                 }
 
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não encontrado!</p>";
+                $_SESSION['msg'] = "<p sclass='alert alert-danger;'>Erro: Usuário não encontrado!</p>";
                 $urlRedirect = URL . "dashboard/index";
                 header("Location: $urlRedirect");
             }
@@ -141,7 +141,7 @@
                     $this->viewEditUser();
                 }
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Usuário não encontrado!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger;'>Erro: Usuário não encontrado!</p>";
                 $urlRedirect = URL . "dashboard/index";
                 header("Location: $urlRedirect");
             }
@@ -161,7 +161,7 @@
                 $deleteUser = new \App\Model\DeleteUser();
                 $deleteUser->deleteUser($this->id);
             } else {
-                $_SESSION['msg'] = "<p style='color: #f00;'>Erro: Necessário selecionar um usuário!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger;'>Erro: Necessário selecionar um usuário!</p>";
             }
             $urlRedirect = URL . "dashboard/index";
             header("Location: $urlRedirect");

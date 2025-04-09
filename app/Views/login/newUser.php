@@ -43,4 +43,4 @@
 
     <button type="submit" name="NewUser" value="Cadastrar">Cadastrar</button>
 </form>
-<a href="<?= URL; ?>login/index">Login</a>
+<a href="<?= URL; ?>">Login</a>

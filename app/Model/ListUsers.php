@@ -32,7 +32,7 @@
             if($this->resultBD){
                 $this->result = true;
             }else{
-                $_SESSION['msg'] = "<p style='color: #f00'>Erro: Nenhum usuário encontrado!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger'>Erro: Nenhum usuário encontrado!</p>";
                 $this->result = false;
             }
         }
