@@ -11,6 +11,7 @@
             $listUsers->listUsers();
             if ($listUsers->getResult()) {
                 $this->data['listUsers'] = $listUsers->getResultBD();
+                $this->data['countUsers'] = $listUsers->getUsersCount();
             } else {
                 $this->data['listUsers'] = [];
             }

@@ -79,10 +79,10 @@
             $upUser->exeUpdate("users", $this->data, "WHERE id=:id", "id={$this->data['id']}");
 
             if ($upUser->getResult()) {
-                $_SESSION['msg'] = "<p class='alert alert-success;'>Usuário editado com sucesso!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-success'>Usuário editado com sucesso!</p>";
                 $this->result = true;
             } else {
-                $_SESSION['msg'] = "<p class='alert alert-danger;'>Erro: Usuário não editado com sucesso!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger'>Erro: Usuário não editado com sucesso!</p>";
                 $this->result = false;
             }
         }

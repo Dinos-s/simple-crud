@@ -28,7 +28,7 @@
                 $deleteUser->exeDelete("users", "WHERE id =:id", "id={$this->id}");
 
                 if ($deleteUser->getResult()) {
-                    $_SESSION['msg'] = "<p class='alert alert-success;'>Usuário apagado com sucesso!</p>";
+                    $_SESSION['msg'] = "<p class='alert alert-success'>Usuário apagado com sucesso!</p>";
                     $this->result = true;
                 } else {
                     $_SESSION['msg'] = "<p class='alert alert-danger'>Erro: Usuário não apagado com sucesso!</p>";

@@ -43,10 +43,10 @@
             $createUser->exeCreate("users", $this->data);
 
             if ($createUser->getResult()) {
-                $_SESSION['msg'] = "<p class='alert alert-success;'>Usuário cadastrado com sucesso!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-success'>Usuário cadastrado com sucesso!</p>";
                 $this->result = true;
             } else {
-                $_SESSION['msg'] = "<p class='alert alert-danger;'>Erro: Usuário não cadastrado com sucesso!</p>";
+                $_SESSION['msg'] = "<p class='alert alert-danger'>Erro: Usuário não cadastrado com sucesso!</p>";
                 $this->result = false;
             }
         }
