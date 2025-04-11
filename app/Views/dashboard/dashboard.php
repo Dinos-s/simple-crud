@@ -1,10 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Dashboard</a>
+        <a class="navbar-brand text-white text-decoration-none" href="<?= URL; ?>dashboard/index">Crud Simples</a>
 
-        <h2 class="text-white">
-            <a href="<?= URL; ?> dashboard/index" class="text-white text-decoration-none">Crud Simples</a>
-        </h2>
+        <h2 class="text-white">Dashboard</h2>
 
         <div class="d-flex align-items-center">
             <span class="navbar-text text-white me-3">
@@ -54,7 +52,7 @@
                         <div class="btn-group">
                            <a href="<?= URL . "user/view/{$id}"?>" class="btn btn-sm btn-info"><i class="fa-solid fa-eye"></i></a>
                            <a href="<?= URL . "user/edit/{$id}"?>" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                           <a href="<?= URL . "user/delet/{$id}"?>" class="btn btn-sm btn-danger" onclick='return confirm("Tem certeza que desaja apagar este registro?")'><i class="fa-solid fa-trash"></i></a>
+                           <a href="<?= URL . "user/delete/{$id}"?>" class="btn btn-sm btn-danger" onclick='return confirm("Tem certeza que desaja apagar este registro?")'><i class="fa-solid fa-trash"></i></a>
                         </div>
                      </td>
                   </tr>

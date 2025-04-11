@@ -1,5 +1,6 @@
 const formLogin = document.getElementById("form-login")
 const formNewUser = document.getElementById("form-new-user")
+const formEditUser = document.getElementById("form-edit-user")
 
 // Calcular a força da senha
 function forceSenha() {
@@ -149,5 +150,25 @@ if (formNewUser) {
         }
         
         checkSenha(senha)
+    })
+}
+
+// Formulário de edição de usuário
+if (formEditUser) {
+    formEditUser.addEventListener('submit', async(e)=> {
+        var user = document.getElementById('nome').value
+        var email = document.getElementById('email').value
+
+        if (user === "") {
+            e.preventDefault()
+            document.getElementById("msg").innerHTML = "<p style='color: #f00;'>Erro: Necessário preencher o campo nome de usuário!</p>";
+            return;
+        }
+
+        if (email === "") {
+            e.preventDefault()
+            document.getElementById('msg').innerHTML = "<p style='color: #f00;'>Erro: Necessário preencher o campo e-mail!</p>";
+            return;
+        }
     })
 }
