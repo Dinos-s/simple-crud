@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    ports:
+      - '3307:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=0000 
+      - MYSQL_DATABASE=crudSimple
+      - MYSQL_PASSWORD=secret
+      - MYSQL_USER=dbuser
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+volumes:
+  mysqldata:
