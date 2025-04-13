@@ -14,6 +14,7 @@
                 $this->data['countUsers'] = $listUsers->getUsersCount();
             } else {
                 $this->data['listUsers'] = [];
+                $this->data['countUsers'] = 0;
             }
 
             $loadView = new \Core\ConfigView("Views/dashboard/dashboard", $this->data);

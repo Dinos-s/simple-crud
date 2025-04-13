@@ -28,7 +28,7 @@
         private function loadMetodo():void {
             $classLoad = new $this->classLoad();
             if (method_exists($classLoad, $this->urlMetodo)) {
-                $classLoad->{$this->urlMetodo}( $this->urlParam);
+                $classLoad->{$this->urlMetodo}($this->urlParam);
             } else {
                 die("Erro - carregar metodo: Por favor tente novamente");
             }

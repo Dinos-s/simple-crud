@@ -1,18 +1,21 @@
 services:
   app:
     build: .
+    container_name: container_php
     ports:
-      - "8000:80"
+      - "80:80"
     volumes:
       - ./:/var/www/html
     depends_on:
       - db
+    networks:
+      - minha-rede-no-docker
 
   db:
     image: mysql:8.0
     container_name: mysql_container
     ports:
-      - '3307:3306'
+      - '3306:3306'
     environment:
       - MYSQL_ROOT_PASSWORD=0000 
       - MYSQL_DATABASE=crudSimple
@@ -20,6 +23,12 @@ services:
       - MYSQL_USER=dbuser
     volumes:
       - mysqldata:/var/lib/mysql
+    networks:
+      - minha-rede-no-docker
+
+networks:
+  minha-rede-no-docker:
+    driver: bridge
 
 volumes:
   mysqldata:

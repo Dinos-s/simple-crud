@@ -4,7 +4,7 @@
     // Configurações básicas no site
     abstract class Config {
         protected function config():void {
-            define('URL', 'http://localhost/simple_crud/');
+            define('URL', 'http://localhost/simple_crud/'); //--> Se estiver usando docker, utilize apenas 'http://localhost/';
 
             define('CONTROLLER', 'Login');
             define('METODO', 'index');
@@ -16,7 +16,7 @@
              * Variáveis de conexão com o banco de dados;
              * Mude para se adaptar ao seu projeto, caso nescessário;
             */
-            define('HOST', 'localhost');
+            define('HOST', 'localhost'); //--> Mude para 'db' para acessar o banco via docker;
             define('USER', 'root');
             define('PASS', '0000');
             define('DBNAME', 'crudSimple');
